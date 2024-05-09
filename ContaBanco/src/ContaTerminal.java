@@ -3,8 +3,7 @@ import java.util.Scanner;
 
 public class ContaTerminal {
     public static void main(String[] args){
-        Locale.setDefault(Locale.US);
-        Scanner scanner= new Scanner(System.in);
+        Scanner scanner= new Scanner(System.in).useLocale(Locale.US);
         
         int numero;
         String agencia, nomeCliente;
@@ -14,7 +13,7 @@ public class ContaTerminal {
         numero = scanner.nextInt();
 
         System.out.println("Por favor, digite o identificador da Agência:");
-        scanner.nextLine();
+        scanner.nextLine(); //Consumir quebra de linha, para evitar erro de buffer.
         agencia= scanner.nextLine();
 
         System.out.println("Por favor, digite o nome do cliente:");
@@ -25,7 +24,7 @@ public class ContaTerminal {
 
         System.out.printf("Olá %s, obrigado por criar uma conta em nosso banco, sua agência é %s, conta %d e seu saldo de R$%.2f já está disponível para saque.", nomeCliente, agencia, numero,saldo);
 
-        scanner.close();
+        scanner.close(); //Desalocar o objeto scanner da memória.
         
 }
 }
